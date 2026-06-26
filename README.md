@@ -1,11 +1,18 @@
-# KG Agent
+# README
 
-A LangGraph-based agentic system for multi-hop reasoning over the POLE knowledge graph stored in Neo4j. The agent answers natural language questions by iteratively traversing the graph using a structured tool set.
+Agent system for multi-hop reasoning over the POLE knowledge graph stored in Neo4j. The agent answers natural language questions by iteratively traversing the graph using a structured tool set.
+
+We use ZOGRASCOPE as our benchmarking dataset - you can load the original instance and find the original datasets [here](https://github.com/interact-erc/ZOGRASCOPE/tree/main)
+
 
 ## Abstract
+Knowledge graphs (KGs) are increasingly used as external knowledge sources for Large Language Model (LLM) agents, yet agent architecture and information retrieval pipelines are often treated as the primary improvement strategies, while the graph itself remains a fixed, unmodified input. This study investigates whether systematic textual and structural enrichment of a KG improves agent performance on knowledge graph question answering tasks. To our knowledge, a limited number of studies have isolated individual KG enrichment strategies to measure their independent effect on agent performance. Results show consistent improvements in answer quality and agent efficiency across all agent configurations, with gains extending to complex multi-hop questions; however, the extent of these gains depends on the backbone model's capabilities and the underlying retrieval strategy. While further research across diverse agent architectures, KGs and benchmarks is warranted, our findings suggest that knowledge graph representation design can serve as a meaningful optimization target alongside agent architecture and information retrieval methods.
 
 ## Research Questions
 
+1. To what extent can enriching a knowledge graph with additional textual and structural information improve the performance of LLM-based agents on complex knowledge graph question answering tasks?
+2. How should the performance of an LLM-based agent on knowledge graph tasks be measured, and what constitutes meaningful improvement?
+3. What types of knowledge graph enrichments enable an LLM-based agent to navigate and retrieve relevant information more effectively from a knowledge graph?
 
 ## Setup
 
@@ -17,13 +24,13 @@ A LangGraph-based agentic system for multi-hop reasoning over the POLE knowledge
 
 2. Install dependencies:
 
-   This project uses uv as a package manager.
+   This project uses uv as a package manager. Make sure to install it first
    
    ```bash
    uv sync
    ```
 
-4. Create a `.env` file with the following variables:
+4. Create an `.env` file with the following variables:
    ```
    NEO4J_URI=bolt://localhost:7687
    NEO4J_USERNAME=neo4j
@@ -38,6 +45,7 @@ A LangGraph-based agentic system for multi-hop reasoning over the POLE knowledge
    AZURE_OPENAI_ENDPOINT=your_azure_endpoint
    OPENAI_API_KEY=your_azure_api_key
    ```
+   Or you can copy directly the `.env copy` file
 
 ## Running Evaluations
 
