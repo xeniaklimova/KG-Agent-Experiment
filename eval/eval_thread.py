@@ -30,7 +30,6 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, "scripts")
-sys.path.insert(0, "src")
 
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=".env")
