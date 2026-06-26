@@ -1,6 +1,6 @@
 # KG Agent
 
-A LangGraph-based agentic system for multi-hop reasoning over a POLE (Person, Object, Location, Event) knowledge graph stored in Neo4j. The agent answers natural language questions by iteratively traversing the graph using a structured tool set.
+A LangGraph-based agentic system for multi-hop reasoning over the POLE knowledge graph stored in Neo4j. The agent answers natural language questions by iteratively traversing the graph using a structured tool set.
 
 ## Abstract
 
@@ -16,11 +16,14 @@ A LangGraph-based agentic system for multi-hop reasoning over a POLE (Person, Ob
    ```
 
 2. Install dependencies:
+
+   This project uses uv as a package manager.
+   
    ```bash
    uv sync
    ```
 
-3. Create a `.env` file with the following variables:
+4. Create a `.env` file with the following variables:
    ```
    NEO4J_URI=bolt://localhost:7687
    NEO4J_USERNAME=neo4j
@@ -31,7 +34,7 @@ A LangGraph-based agentic system for multi-hop reasoning over a POLE (Person, Ob
    MISTRAL_BASE_URL=https://api.mistral.ai/v1
    MISTRAL_API_KEY=your_mistral_api_key
 
-   # GPT-4.1 via Azure (optional, uncomment in scripts)
+   # GPT-4.1 via Microsoft Foundry
    AZURE_OPENAI_ENDPOINT=your_azure_endpoint
    OPENAI_API_KEY=your_azure_api_key
    ```
@@ -52,7 +55,7 @@ uv run eval/eval_runner.py \
 - `--split` — `mixed` (equal train/test sample), `train`, or `test`
 - `--n` — number of questions to evaluate
 - `--seed` — random seed for reproducibility
-- `--workers` — number of parallel workers
+- `--workers` — number of parallel calls
 
 Results are written to `results/` as both `.csv` (per-question) and `.json` (summary statistics).
 
@@ -83,9 +86,9 @@ Results are written to `results/` as both `.csv` (per-question) and `.json` (sum
 
 ```
 KG-Agent-Experiment/
-├── src/kgagent/            # Core agent package
+├── kgagent/            # Core agent package
 │   ├── config.py           # All constants (step limits, token budgets, etc.)
-│   ├── tools.py            # 7 graph tools (find_nodes, explore, filter_by_constraint, ...)
+│   ├── tools.py            # graph tools (find_nodes, explore, filter_by_constraint, etc)
 │   ├── prompts.py          # SYSTEM_PROMPT + SCHEMA_ANNOTATIONS per graph config
 │   └── agent.py            # AgentState, graph construction, build_app(), ask()
 │
@@ -97,8 +100,8 @@ KG-Agent-Experiment/
 │   └── mistral_en4.py      # + Relationship descriptions & neighbor information (combined)
 │
 ├── eval/
-│   ├── eval_runner.py      # Evaluation harness (parallel, writes CSV + JSON results)
-│   └── eval_thread.py      # Per-question threaded execution
+│   ├── eval_runner.py      # Evaluation harness (old version)
+│   └── eval_thread.py      # Per-question threaded execution (use this one)
 │
 ├── data_prep/              # Graph enrichment scripts
 │   ├── enrich_relprop.py   # Adds relationship description properties (EN1)
@@ -106,7 +109,7 @@ KG-Agent-Experiment/
 │   ├── enrich_nodedeg.py   # Adds neighbor_info node property (EN3)
 │   └── enrich_allenrich.py # Combines EN1 + EN3 enrichments (EN4)
 │
-├── zogra/data/             # Evaluation question set
+├── zogra/data/             # Evaluation question set ZOGRASCOPE, already pre-processed and ready for eval 
 │   ├── zograscope_length_train_v1_answered_v3.csv
 │   └── zograscope_length_test_v1_answered_v3.csv
 │
