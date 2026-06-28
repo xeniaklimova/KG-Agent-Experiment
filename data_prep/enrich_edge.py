@@ -1,7 +1,7 @@
 """
 enrich_edge.py
 
-Adds shortcut edges to the enrichedge graph for faster agent traversal.
+Adds shortcut edges to the enrichedge graph
 
 Usage:
     uv run python data_prep/enrich_relprop.py

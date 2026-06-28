@@ -12,11 +12,8 @@ Outputs:
     data/zograscope_length_train_v1_answered.csv
     data/zograscope_length_test_v1_answered.csv
 
-New columns added:
-    answer_values      — JSON list of results
-    error_message      — empty string on success, error text on failure
 
-Usage:
+Run:
     uv run eval/prepare_ground_truth.py
 """
 

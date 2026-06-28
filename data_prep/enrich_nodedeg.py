@@ -1,7 +1,7 @@
 """
 enrich_nodedeg.py
 
-Adds a `neighbor_info` text property to every node in the enrich3 database.
+Adds a `neighbor_info` text property to every node
 
 Example property value on a Person node:
   "KNOWS_SN - Person: 3 | KNOWS_LW - Person: 1 | PARTY_TO - Crime: 1 | CURRENT_ADDRESS - Location: 1"

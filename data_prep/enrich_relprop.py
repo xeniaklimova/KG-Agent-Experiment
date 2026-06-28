@@ -2,8 +2,6 @@
 enrich_relprop.py
 
 Adds `description` properties to all relationships in enrichrelprop.
-Descriptions encode semantic meaning and selection hints for ambiguous
-relationship types (KNOWS variants, CALLER/CALLED).
 
 Usage:
     uv run python data_prep/enrich_relprop.py

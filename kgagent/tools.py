@@ -16,7 +16,6 @@ from kgagent.config import (
 # Module-level graph_db — injected by launcher scripts via set_graph_db()
 graph_db = None
 
-# Module-level flag — set to True by en1/en4 launcher scripts to enable relationship descriptions in _explore_discovery()
 EXPLORE_WITH_DESCRIPTIONS: bool = False
 
 

@@ -1,5 +1,4 @@
 """
-eval_runner.py
 
 Runs the agent against a random sample of benchmark questions and
 scores results against ground truth.
@@ -42,17 +41,13 @@ csv.field_size_limit(sys.maxsize)
 # EXCLUDED_TYPES = {"argmax", "argmin", "max", "min"}
 EXCLUDED_TYPES = set()
 
-# ---------------------------------------------------------------------------
-# Pricing (GPT-4.1, USD per 1M tokens)
-# ---------------------------------------------------------------------------
+
 PRICE_INPUT_PER_M  = 2.00
 PRICE_OUTPUT_PER_M = 8.00
 EUR_PER_USD        = 0.92
 
 
-# ---------------------------------------------------------------------------
-# Agent runner
-# ---------------------------------------------------------------------------
+
 
 def run_agent(question: str) -> dict:
     """Run the agent on a single question. Returns structured result + usage stats."""
@@ -185,7 +180,6 @@ def score_answer(row: dict, agent_result: dict) -> dict:
     except (json.JSONDecodeError, TypeError):
         gt_parsed = []
 
-    # ── Count questions ──────────────────────────────────────────────────────
     if q_type == "count":
         # Enriched: {"count": N, "entities": [...]}
         if isinstance(gt_parsed, dict) and "count" in gt_parsed:
@@ -217,9 +211,7 @@ def score_answer(row: dict, agent_result: dict) -> dict:
 
         count_correct = (agent_count is not None and agent_count == true_count)
 
-        # Entity F1 only when GT has entities AND agent returned entity names (not integers).
-        # Using count strings for entity matching causes false positives (e.g. "4" matching
-        # call_duration="4") and inflated F1 scores.
+
         if gt_entities and entity_preds:
             tp        = sum(1 for gt_e in gt_entities if _match_entity(gt_e, entity_preds))
             precision = tp / len(entity_preds)
@@ -242,7 +234,6 @@ def score_answer(row: dict, agent_result: dict) -> dict:
             "score_note":    note,
         }
 
-    # ── Entity set and attribute set questions ───────────────────────────────
     gt_entities = _dedup(gt_parsed) if isinstance(gt_parsed, list) else []
 
     if not gt_entities:
@@ -271,17 +262,15 @@ def score_answer(row: dict, agent_result: dict) -> dict:
     }
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--n",     type=int,  default=50,    help="Number of questions to sample")
     parser.add_argument("--split", type=str,  default="test", choices=["train", "test", "mixed"])
     parser.add_argument("--seed",  type=int,  default=42)
-    parser.add_argument("--agent", type=str,  default="mistral_base", choices=[ "mistral_en1", "mistral_base", "mistral_en2", "mistral_en3", "mistral_en4"],
-                        help="Agent module to use (default: mistral_base)")
+    parser.add_argument("--agent", type=str,  default="base", choices=[ "en1", "base", "en2", "en3", "en4"],
+                        help="Agent module to use (default: base)")
     parser.add_argument("--out",   type=str,  default="results", help="Output directory")
     args = parser.parse_args()
 

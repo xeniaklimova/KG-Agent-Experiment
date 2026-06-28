@@ -1,0 +1,71 @@
+{
+  "split": "mixed",
+  "n_questions": 2,
+  "seed": 88,
+  "workers": 1,
+  "wall_time_s": 19.9,
+  "timestamp": "20260628_205610",
+  "overall": {
+    "exact_accuracy": 1.0,
+    "avg_f1": 1.0,
+    "finish_rate": 1.0,
+    "terminated_rate": 0.0,
+    "avg_step_count": 6.0,
+    "avg_tokens": 16982,
+    "avg_tokens_finished": 16982,
+    "avg_cost_usd": 0.036232,
+    "total_cost_usd": 0.0725,
+    "total_cost_eur": 0.0667
+  },
+  "by_type": {
+    "count": {
+      "n": 2,
+      "exact_accuracy": 1.0,
+      "avg_f1": 1.0,
+      "avg_steps": 6.0,
+      "avg_tokens": 16982,
+      "avg_cost_usd": 0.036232,
+      "terminated_rate": 0.0
+    }
+  },
+  "by_complexity": {
+    "easy (2-3 nodes)": {
+      "n": 1,
+      "exact_accuracy": 1.0,
+      "avg_f1": 1.0,
+      "avg_steps": 6.0,
+      "avg_tokens": 15694,
+      "avg_cost_usd": 0.032996,
+      "terminated_rate": 0.0
+    },
+    "complex (4-5 nodes)": {
+      "n": 1,
+      "exact_accuracy": 1.0,
+      "avg_f1": 1.0,
+      "avg_steps": 6.0,
+      "avg_tokens": 18270,
+      "avg_cost_usd": 0.039468,
+      "terminated_rate": 0.0
+    },
+    "by_num_nodes": {
+      "3": {
+        "n": 1,
+        "exact_accuracy": 1.0,
+        "avg_f1": 1.0,
+        "avg_steps": 6.0,
+        "avg_tokens": 15694,
+        "avg_cost_usd": 0.032996,
+        "terminated_rate": 0.0
+      },
+      "4": {
+        "n": 1,
+        "exact_accuracy": 1.0,
+        "avg_f1": 1.0,
+        "avg_steps": 6.0,
+        "avg_tokens": 18270,
+        "avg_cost_usd": 0.039468,
+        "terminated_rate": 0.0
+      }
+    }
+  }
+}

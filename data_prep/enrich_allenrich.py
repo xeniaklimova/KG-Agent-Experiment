@@ -1,10 +1,7 @@
 """
 enrich_allenrich.py
 
-Applies all enrichments to the 'allenrich' database in one pass:
-  1. Relationship descriptions (enrich_relprop)
-  2. Shortcut edges            (enrich_edge)
-  3. Neighbor-info properties  (enrich_nodedeg)
+Applies all enrichments to the database
 
 Usage:
     uv run python data_prep/enrich_allenrich.py

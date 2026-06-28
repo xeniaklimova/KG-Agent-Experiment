@@ -29,7 +29,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, "scripts")
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT))
 
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=".env")
@@ -381,8 +383,8 @@ def main():
     parser.add_argument("--split",   type=str, default="mixed",
                         choices=["train", "test", "mixed"])
     parser.add_argument("--seed",    type=int, default=42)
-    parser.add_argument("--agent",   type=str, default="mistral_base",
-                        choices=[ "mistral_en1", "mistral_base", "mistral_en2", "mistral_en3", "mistral_en4"])
+    parser.add_argument("--agent",   type=str, default="base",
+                        choices=[ "en1", "base", "en2", "en3", "en4"])
     parser.add_argument("--workers", type=int, default=2,
                         help="Parallel worker threads (default: 4)")
     parser.add_argument("--out",     type=str, default="results",)

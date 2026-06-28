@@ -2,7 +2,10 @@
 
 Agent system for multi-hop reasoning over the POLE knowledge graph stored in Neo4j. The agent answers natural language questions by iteratively traversing the graph using a structured tool set.
 
-We use ZOGRASCOPE as our benchmarking dataset - you can load the original instance and find the original datasets [here](https://github.com/interact-erc/ZOGRASCOPE/tree/main)
+We use ZOGRASCOPE as our benchmarking dataset - you canvfind the original datasets [here](https://github.com/interact-erc/ZOGRASCOPE/tree/main).
+
+The original POLE graph can be found and loaded from [here](https://github.com/neo4j-graph-examples/pole).
+
 
 
 ## Abstract
@@ -27,7 +30,11 @@ Knowledge graphs (KGs) are increasingly used as external knowledge sources for L
    This project uses uv as a package manager. Make sure to install it first
    
    ```bash
-   uv sync
+   python3 -m venv .venv          # 1. create a virtual environment
+   source .venv/bin/activate          # 2. activate it
+   uv run <script>  # 3. run any script within the environment
+
+   uv sync # sync your env, installs everything in the lockfile
    ```
 
 4. Create an `.env` file with the following variables:
@@ -46,6 +53,13 @@ Knowledge graphs (KGs) are increasingly used as external knowledge sources for L
    OPENAI_API_KEY=your_azure_api_key
    ```
    Or you can copy directly the `.env copy` file
+
+## To reproduce
+
+We do not provide the modified graphs here because of the large filesizes, but you can find and load the original [POLE graph](https://github.com/neo4j-graph-examples/pole) and run the scripts provided in the `data_prep` folder to apply graph changes. Then you should be good to go to tun evaluations in `eval_thread.py`.
+
+Two examples of base agent runs are in `run_logs` 
+
 
 ## Running Evaluations
 

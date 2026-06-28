@@ -41,6 +41,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
+include = ["kgagent*"]
 
 [tool.ruff]
 line-length = 88
